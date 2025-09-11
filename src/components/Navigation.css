@@ -1,0 +1,159 @@
+.navigation {
+  background: white;
+  border-bottom: 1px solid #e1e5e9;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.brand-link:hover {
+  color: #667eea;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+}
+
+.brand-text {
+  font-weight: 700;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  color: #667eea;
+  background: #f8f9fa;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.user-email {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-btn:hover {
+  background: #5a6fd8;
+}
+
+/* Dark mode styles */
+.dark-mode .navigation {
+  background: #2d3748;
+  border-bottom-color: #4a5568;
+}
+
+.dark-mode .brand-link {
+  color: #e2e8f0;
+}
+
+.dark-mode .brand-link:hover {
+  color: #90cdf4;
+}
+
+.dark-mode .nav-link {
+  color: #a0aec0;
+}
+
+.dark-mode .nav-link:hover {
+  color: #90cdf4;
+  background: #4a5568;
+}
+
+.dark-mode .nav-user {
+  background: #4a5568;
+}
+
+.dark-mode .user-email {
+  color: #cbd5e0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 16px;
+  }
+  
+  .brand-text {
+    display: none;
+  }
+  
+  .nav-menu {
+    gap: 12px;
+  }
+  
+  .nav-user {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 12px;
+  }
+  
+  .user-email {
+    font-size: 0.8rem;
+  }
+  
+  .logout-btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+}
