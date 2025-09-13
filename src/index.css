@@ -59,6 +59,26 @@ body {
   gap: 12px;
 }
 
+/* Desktop: Show all controls in line 2 */
+@media (min-width: 769px) {
+  .header-line-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .desktop-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .mobile-settings-button {
+    display: none;
+  }
+}
+
 .calendar-title {
   font-size: 26px;
   font-weight: 500;
@@ -1824,6 +1844,11 @@ select.form-input {
   /* Hide desktop controls on mobile */
   .desktop-controls {
     display: none;
+  }
+  
+  /* Show mobile settings button on mobile */
+  .mobile-settings-button {
+    display: block;
   }
   
   /* Mobile Settings Drawer */
