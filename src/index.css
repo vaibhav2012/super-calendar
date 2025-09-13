@@ -1253,15 +1253,139 @@ body {
   margin-bottom: 0;
 }
 
-/* Responsive design for form rows */
+/* Enhanced Mobile Task Modal */
 @media (max-width: 768px) {
+  .modal {
+    width: 95vw;
+    max-width: 95vw;
+    max-height: 90vh;
+    margin: 5vh auto;
+    border-radius: 12px;
+  }
+  
+  .modal-header {
+    padding: 16px 20px;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .modal-title {
+    font-size: 18px;
+  }
+  
+  .close-button {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-label {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .form-input, .form-textarea, .form-select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  .form-textarea {
+    min-height: 80px;
+  }
+  
   .form-row {
     flex-direction: column;
-    gap: 0;
+    gap: 12px;
   }
   
   .form-row .form-group {
-  margin-bottom: 16px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+  
+  .form-buttons button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  
+  /* Subtask mobile improvements */
+  .subtask-item {
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 6px;
+  }
+  
+  .subtask-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+  
+  /* Recurring options mobile layout */
+  .recurring-options {
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+  }
+  
+  .recurring-options h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .radio-group {
+    gap: 8px;
+  }
+  
+  .radio-label {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    width: 98vw;
+    max-width: 98vw;
+    margin: 2vh auto;
+    max-height: 96vh;
+  }
+  
+  .modal-header {
+    padding: 12px 16px;
+  }
+  
+  .modal-title {
+    font-size: 16px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .form-input, .form-textarea, .form-select {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .form-buttons {
+    padding: 12px 16px;
+  }
+  
+  .form-buttons button {
+    padding: 12px;
+    font-size: 14px;
   }
 }
 
@@ -1579,20 +1703,39 @@ select.form-input {
   color: #9aa0a6;
 }
 
-/* Responsive Design */
+/* Enhanced Mobile Responsive Design */
+
+/* Tablet and small desktop */
+@media (max-width: 1024px) {
+  .calendar-container {
+    padding: 12px;
+  }
+  
+  .calendar-header {
+    padding: 16px 0;
+  }
+  
+  .day-cell {
+    min-height: 90px;
+  }
+}
+
+/* Mobile landscape and small tablets */
 @media (max-width: 768px) {
   .calendar-container {
-    padding: 10px;
+    padding: 8px;
   }
   
   .calendar-header {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     align-items: stretch;
+    padding: 12px 0;
   }
   
   .navigation-buttons {
     justify-content: center;
+    gap: 8px;
   }
   
   .header-controls {
@@ -1602,13 +1745,13 @@ select.form-input {
   }
   
   .search-filter-section {
-    flex-direction: row;
-    gap: 6px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 8px;
   }
   
   .search-input {
     width: 100%;
+    font-size: 16px; /* Prevents zoom on iOS */
   }
   
   .search-filter-section > * {
@@ -1617,15 +1760,206 @@ select.form-input {
   
   .view-toggle {
     justify-content: center;
+    gap: 4px;
+  }
+  
+  .view-toggle button {
+    padding: 8px 12px;
+    font-size: 14px;
   }
   
   .day-cell {
-    min-height: 80px;
+    min-height: 70px;
+    padding: 4px;
   }
   
   .week-all-day-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* Touch-friendly buttons */
+  button, .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better touch targets */
+  .task-item {
+    padding: 8px;
+    margin: 2px 0;
+    border-radius: 6px;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .calendar-container {
+    padding: 4px;
+  }
+  
+  .calendar-header {
+    padding: 8px 0;
+    gap: 8px;
+  }
+  
+  .calendar-title {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .navigation-buttons {
+    gap: 4px;
+  }
+  
+  .navigation-buttons button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .day-cell {
+    min-height: 60px;
+    padding: 2px;
+    font-size: 12px;
+  }
+  
+  .day-number {
+    font-size: 14px;
+  }
+  
+  .task-item {
+    font-size: 12px;
+    padding: 4px 6px;
+    margin: 1px 0;
+  }
+  
+  .view-toggle button {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  
+  /* Swipe-friendly navigation */
+  .calendar-container {
+    touch-action: pan-x pan-y;
+  }
+  
+  /* Mobile Week View */
+  .week-days-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .week-day-header {
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 4px;
+  }
+  
+  .week-day-content {
+    min-height: 200px;
+  }
+  
+  .week-time-slot {
+    height: 40px;
+    font-size: 12px;
+  }
+  
+  .week-time-slot .time-label {
+    font-size: 10px;
+  }
+  
+  /* Mobile Day View */
+  .day-time-slot {
+    height: 50px;
+    font-size: 12px;
+  }
+  
+  .day-time-slot .time-label {
+    font-size: 10px;
+  }
+  
+  .day-tasks-list {
+    padding: 8px;
+  }
+  
+  .day-task-item {
+    margin: 4px 0;
+    padding: 8px;
+    border-radius: 6px;
+  }
+  
+  /* Mobile Month View */
+  .month-grid {
+    gap: 2px;
+  }
+  
+  .month-day-cell {
+    min-height: 50px;
+    padding: 2px;
+  }
+  
+  .month-day-number {
+    font-size: 12px;
+  }
+  
+  .month-tasks {
+    margin-top: 2px;
+  }
+  
+  .month-task-item {
+    font-size: 10px;
+    padding: 2px 4px;
+    margin: 1px 0;
+  }
+  
+  /* Mobile Floating Action Button */
+  .mobile-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #1976d2;
+    color: white;
+    border: none;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-fab:hover {
+    background: #1565c0;
+    transform: scale(1.1);
+  }
+  
+  .mobile-fab:active {
+    transform: scale(0.95);
+  }
+  
+  /* Hide desktop add button on mobile */
+  .add-task-button {
+    display: none;
+  }
+}
+
+/* Show mobile FAB only on mobile */
+@media (min-width: 769px) {
+  .mobile-fab {
+    display: none;
+  }
+  
+  .add-task-button {
+    display: block;
+  }
+}
   
   .week-days-grid {
     grid-template-columns: 1fr;

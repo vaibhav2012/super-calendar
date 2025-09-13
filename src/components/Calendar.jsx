@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { addMonths, subMonths, addWeeks, subWeeks, addDays, subDays } from 'date-fns'
 import CalendarHeader from './CalendarHeader'
 import MonthView from './MonthView'
@@ -26,6 +26,36 @@ const Calendar = ({
   onTaskSizeChange,
   isTodayIST
 }) => {
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
+
+  // Minimum distance for swipe
+  const minSwipeDistance = 50
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      handleNext()
+    }
+    if (isRightSwipe) {
+      handlePrevious()
+    }
+  }
+
   const handlePrevious = () => {
     switch (view) {
       case 'month':
@@ -115,7 +145,12 @@ const Calendar = ({
   }
 
   return (
-    <div className={`calendar-container ${view === 'day' ? 'day-view-container' : ''}`}>
+    <div 
+      className={`calendar-container ${view === 'day' ? 'day-view-container' : ''}`}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <CalendarHeader
         currentDate={currentDate}
         view={view}
@@ -134,6 +169,15 @@ const Calendar = ({
       />
       
       {renderView()}
+      
+      {/* Mobile Floating Action Button */}
+      <button 
+        className="mobile-fab"
+        onClick={() => onAddTask()}
+        aria-label="Add new task"
+      >
+        +
+      </button>
     </div>
   )
 }

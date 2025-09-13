@@ -128,32 +128,96 @@
   color: #cbd5e0;
 }
 
-/* Responsive design */
+/* Enhanced Mobile Navigation */
 @media (max-width: 768px) {
   .nav-container {
-    padding: 0 16px;
+    padding: 0 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    border-bottom: 1px solid #e8eaed;
   }
   
   .brand-text {
     display: none;
   }
   
+  .brand-icon {
+    font-size: 20px;
+  }
+  
   .nav-menu {
-    gap: 12px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
   
   .nav-user {
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-left: 8px;
   }
   
   .user-email {
-    font-size: 0.8rem;
+    font-size: 12px;
+    color: #666;
+    word-break: break-all;
+    text-align: center;
+  }
+  
+  .logout-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    min-height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 8px;
+    flex-wrap: wrap;
+  }
+  
+  .nav-menu {
+    gap: 4px;
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 12px;
+    min-height: 36px;
+  }
+  
+  .nav-user {
+    order: 1;
+    margin-left: 0;
+    padding: 6px 8px;
+  }
+  
+  .user-email {
+    font-size: 10px;
   }
   
   .logout-btn {
     padding: 4px 8px;
-    font-size: 0.8rem;
+    font-size: 10px;
+    min-height: 28px;
   }
 }
