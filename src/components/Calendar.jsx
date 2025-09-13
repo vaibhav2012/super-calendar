@@ -4,6 +4,7 @@ import CalendarHeader from './CalendarHeader'
 import MonthView from './MonthView'
 import WeekView from './WeekView'
 import DayView from './DayView'
+import MobileSettingsDrawer from './MobileSettingsDrawer'
 
 const Calendar = ({ 
   currentDate, 
@@ -28,6 +29,7 @@ const Calendar = ({
 }) => {
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
+  const [isMobileSettingsOpen, setIsMobileSettingsOpen] = useState(false)
 
   // Minimum distance for swipe
   const minSwipeDistance = 50
@@ -54,6 +56,14 @@ const Calendar = ({
     if (isRightSwipe) {
       handlePrevious()
     }
+  }
+
+  const handleOpenMobileSettings = () => {
+    setIsMobileSettingsOpen(true)
+  }
+
+  const handleCloseMobileSettings = () => {
+    setIsMobileSettingsOpen(false)
   }
 
   const handlePrevious = () => {
@@ -166,6 +176,7 @@ const Calendar = ({
         onToggleFocusMode={onToggleFocusMode}
         taskSize={taskSize}
         onTaskSizeChange={onTaskSizeChange}
+        onOpenMobileSettings={handleOpenMobileSettings}
       />
       
       {renderView()}
@@ -178,6 +189,20 @@ const Calendar = ({
       >
         +
       </button>
+      
+      {/* Mobile Settings Drawer */}
+      <MobileSettingsDrawer
+        isOpen={isMobileSettingsOpen}
+        onClose={handleCloseMobileSettings}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={onToggleDarkMode}
+        dayStartHour={dayStartHour}
+        onDayStartHourChange={onDayStartHourChange}
+        taskSize={taskSize}
+        onTaskSizeChange={onTaskSizeChange}
+        focusMode={focusMode}
+        onToggleFocusMode={onToggleFocusMode}
+      />
     </div>
   )
 }

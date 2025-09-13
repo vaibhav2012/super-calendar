@@ -15,7 +15,8 @@ const CalendarHeader = ({
   focusMode,
   onToggleFocusMode,
   taskSize,
-  onTaskSizeChange
+  onTaskSizeChange,
+  onOpenMobileSettings
 }) => {
   const monthYear = format(currentDate, 'MMM yyyy')
 
@@ -129,6 +130,15 @@ const CalendarHeader = ({
             Month
           </button>
         </div>
+        
+        {/* Mobile Settings Button */}
+        <button 
+          className="mobile-settings-button"
+          onClick={onOpenMobileSettings}
+          title="Settings"
+        >
+          ⚙️
+        </button>
       </div>
     </div>
   )
