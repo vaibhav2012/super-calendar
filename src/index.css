@@ -30,9 +30,6 @@ body {
 }
 
 .calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 0;
   padding: 12px 0;
   position: sticky;
@@ -40,6 +37,26 @@ body {
   background: white;
   z-index: 100;
   border-bottom: 1px solid #e8eaed;
+}
+
+/* Desktop Layout */
+.header-line-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.header-line-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.desktop-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .calendar-title {
@@ -1727,9 +1744,6 @@ select.form-input {
   }
   
   .calendar-header {
-    flex-direction: column;
-    gap: 8px;
-    align-items: stretch;
     padding: 8px 0;
     background: white;
     border-bottom: 1px solid #e8eaed;
@@ -1738,45 +1752,65 @@ select.form-input {
     z-index: 100;
   }
   
-  .calendar-title {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 4px;
-  }
-  
-  .navigation-buttons {
-    justify-content: center;
-    gap: 8px;
+  /* Line 1: Title and Navigation */
+  .header-line-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 8px;
   }
   
-  .nav-button {
-    padding: 8px 16px;
-    font-size: 14px;
-    min-height: 36px;
+  .calendar-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
   }
   
-  .header-controls {
+  .navigation-buttons {
     display: flex;
-    flex-direction: column;
     gap: 8px;
     align-items: center;
   }
   
+  .nav-button {
+    padding: 6px 12px;
+    font-size: 14px;
+    min-height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+  }
+  
+  /* Line 2: View Toggle and Settings */
+  .header-line-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
   .view-toggle {
-    justify-content: center;
+    display: flex;
     gap: 4px;
-    margin-bottom: 8px;
   }
   
   .view-toggle button {
     padding: 6px 12px;
     font-size: 12px;
     min-height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .view-toggle button.active {
+    background: #1976d2;
+    color: white;
+    border-color: #1976d2;
   }
   
   .mobile-settings-button {
-    display: block;
     padding: 8px;
     font-size: 16px;
     background: #f8f9fa;
@@ -1785,17 +1819,10 @@ select.form-input {
     cursor: pointer;
     min-height: 36px;
     min-width: 36px;
-    margin-top: 8px;
   }
   
-  /* Hide less important controls on mobile */
-  .day-start-filter,
-  .task-size-filter {
-    display: none;
-  }
-  
-  .theme-toggle,
-  .focus-toggle {
+  /* Hide desktop controls on mobile */
+  .desktop-controls {
     display: none;
   }
   
@@ -2153,6 +2180,10 @@ select.form-input {
   
   .mobile-settings-button {
     display: none;
+  }
+  
+  .desktop-controls {
+    display: flex;
   }
 }
   

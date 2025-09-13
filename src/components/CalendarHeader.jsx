@@ -22,35 +22,72 @@ const CalendarHeader = ({
 
   return (
     <div className="calendar-header">
-      <div className="calendar-title">
-        {monthYear}
+      {/* Line 1: Title and Navigation */}
+      <div className="header-line-1">
+        <div className="calendar-title">
+          {monthYear}
+        </div>
+        
+        <div className="navigation-buttons">
+          <button 
+            className="nav-button"
+            onClick={onPrevious}
+            title="Previous month"
+          >
+            ‹
+          </button>
+          <button 
+            className="nav-button"
+            onClick={onToday}
+            title="Go to today"
+          >
+            Today
+          </button>
+          <button 
+            className="nav-button"
+            onClick={onNext}
+            title="Next month"
+          >
+            ›
+          </button>
+        </div>
       </div>
-      
-      <div className="navigation-buttons">
+
+      {/* Line 2: View Toggle and Settings */}
+      <div className="header-line-2">
+        <div className="view-toggle">
+          <button 
+            className={`view-button ${view === 'day' ? 'active' : ''}`}
+            onClick={() => onViewChange('day')}
+          >
+            Day
+          </button>
+          <button 
+            className={`view-button ${view === 'week' ? 'active' : ''}`}
+            onClick={() => onViewChange('week')}
+          >
+            Week
+          </button>
+          <button 
+            className={`view-button ${view === 'month' ? 'active' : ''}`}
+            onClick={() => onViewChange('month')}
+          >
+            Month
+          </button>
+        </div>
+        
+        {/* Mobile Settings Button */}
         <button 
-          className="nav-button"
-          onClick={onPrevious}
-          title="Previous month"
+          className="mobile-settings-button"
+          onClick={onOpenMobileSettings}
+          title="Settings"
         >
-          ‹
-        </button>
-        <button 
-          className="nav-button"
-          onClick={onToday}
-          title="Go to today"
-        >
-          Today
-        </button>
-        <button 
-          className="nav-button"
-          onClick={onNext}
-          title="Next month"
-        >
-          ›
+          ⚙️
         </button>
       </div>
 
-      <div className="header-controls">
+      {/* Desktop Controls - Hidden on Mobile */}
+      <div className="desktop-controls">
         <select
           className="day-start-filter"
           value={dayStartHour}
@@ -108,36 +145,6 @@ const CalendarHeader = ({
           title={focusMode ? 'Exit focus mode' : 'Enter focus mode - collapse all time slots except current hour'}
         >
           {focusMode ? '🔍' : '👁️'}
-        </button>
-        
-        <div className="view-toggle">
-          <button 
-            className={`view-button ${view === 'day' ? 'active' : ''}`}
-            onClick={() => onViewChange('day')}
-          >
-            Day
-          </button>
-          <button 
-            className={`view-button ${view === 'week' ? 'active' : ''}`}
-            onClick={() => onViewChange('week')}
-          >
-            Week
-          </button>
-          <button 
-            className={`view-button ${view === 'month' ? 'active' : ''}`}
-            onClick={() => onViewChange('month')}
-          >
-            Month
-          </button>
-        </div>
-        
-        {/* Mobile Settings Button */}
-        <button 
-          className="mobile-settings-button"
-          onClick={onOpenMobileSettings}
-          title="Settings"
-        >
-          ⚙️
         </button>
       </div>
     </div>
