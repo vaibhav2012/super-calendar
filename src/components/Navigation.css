@@ -73,12 +73,17 @@
   padding: 8px 16px;
   background: #f8f9fa;
   border-radius: 8px;
+  max-width: 300px;
 }
 
 .user-email {
   color: #666;
   font-size: 0.9rem;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .logout-btn {
@@ -91,6 +96,8 @@
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .logout-btn:hover {
@@ -137,6 +144,7 @@
     z-index: 1000;
     background: white;
     border-bottom: 1px solid #e8eaed;
+    height: 50px;
   }
   
   .brand-text {
@@ -149,75 +157,78 @@
   
   .nav-menu {
     gap: 8px;
-    flex-wrap: wrap;
+    align-items: center;
   }
   
   .nav-link {
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 6px 10px;
+    font-size: 12px;
     border-radius: 6px;
-    min-height: 44px;
+    min-height: 36px;
     display: flex;
     align-items: center;
   }
   
   .nav-user {
-    flex-direction: column;
-    gap: 6px;
-    padding: 8px 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
     background: #f8f9fa;
-    border-radius: 8px;
-    margin-left: 8px;
+    border-radius: 6px;
+    margin-left: 4px;
   }
   
   .user-email {
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
-    word-break: break-all;
-    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
   }
   
   .logout-btn {
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 4px 8px;
+    font-size: 11px;
     border-radius: 4px;
-    min-height: 32px;
+    min-height: 28px;
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 480px) {
   .nav-container {
     padding: 0 8px;
-    flex-wrap: wrap;
+    height: 45px;
   }
   
   .nav-menu {
     gap: 4px;
-    order: 2;
-    width: 100%;
-    justify-content: center;
-    margin-top: 8px;
+    align-items: center;
   }
   
   .nav-link {
-    padding: 6px 8px;
-    font-size: 12px;
-    min-height: 36px;
+    padding: 4px 6px;
+    font-size: 11px;
+    min-height: 32px;
   }
   
   .nav-user {
-    order: 1;
-    margin-left: 0;
-    padding: 6px 8px;
+    margin-left: 2px;
+    padding: 4px 6px;
+    gap: 6px;
   }
   
   .user-email {
     font-size: 10px;
+    max-width: 100px;
   }
   
   .logout-btn {
-    padding: 4px 8px;
+    padding: 3px 6px;
     font-size: 10px;
-    min-height: 28px;
+    min-height: 26px;
   }
 }
