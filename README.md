@@ -1,12 +1,12 @@
-# Google Calendar Clone
+# Super Calendar
 
-A modern, responsive Google Calendar clone built with React that allows you to manage tasks as calendar events. Tasks can be marked as complete directly from the calendar interface.
+A modern, responsive Calendar built with React that allows you to manage tasks as calendar events. Tasks can be marked as complete directly from the calendar interface.
 
 ## Features
 
 - 📅 **Calendar Views**: Month, Week, and Day views (Month view implemented)
 - ✅ **Task Management**: Create, edit, delete, and mark tasks as complete
-- 💾 **Local Storage**: Tasks are automatically saved to your browser's local storage
+- 💾 **Cloud Storage**: Tasks are automatically saved to cloud & sync across devices
 - 📱 **Responsive Design**: Works on desktop, tablet, and mobile devices
 - 🎨 **Modern UI**: Clean, Google-inspired design with smooth animations
 
