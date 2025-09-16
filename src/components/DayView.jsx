@@ -166,8 +166,8 @@ const DayView = ({ currentDate, tasks, onTaskClick, onToggleTask, onAddTask, hid
                   className={`day-time-slot ${isTodayIST(currentDate) && currentTime.getHours() === timeSlot.hour ? 'current-time-slot' : ''} ${isCollapsed ? 'collapsed' : ''}`}
                   style={{ minHeight: `${slotHeight}px` }}
                   onClick={(e) => {
-                    // Check if click is on a task - if so, don't add new task
-                    if (e.target.closest('.day-time-slot-task')) {
+                    // Check if click is directly on a task item
+                    if (e.target.classList.contains('task-item') || e.target.closest('.task-item')) {
                       return
                     }
                     // Otherwise, add new task

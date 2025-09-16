@@ -148,6 +148,7 @@ const Calendar = ({
             tasks={tasks}
             onTaskClick={onTaskClick}
             onToggleTask={onToggleTask}
+            onAddTask={onAddTask}
             isTodayIST={isTodayIST}
           />
         )

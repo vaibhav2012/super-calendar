@@ -12,7 +12,7 @@ import {
 } from 'date-fns'
 import DayCell from './DayCell'
 
-const MonthView = ({ currentDate, tasks, onTaskClick, onToggleTask, isTodayIST }) => {
+const MonthView = ({ currentDate, tasks, onTaskClick, onToggleTask, onAddTask, isTodayIST }) => {
   const monthStart = startOfMonth(currentDate)
   const monthEnd = endOfMonth(monthStart)
   const startDate = startOfWeek(monthStart, { weekStartsOn: 1 }) // Monday
@@ -40,6 +40,7 @@ const MonthView = ({ currentDate, tasks, onTaskClick, onToggleTask, isTodayIST }
           isToday={isTodayIST(day)}
           onTaskClick={onTaskClick}
           onToggleTask={onToggleTask}
+          onAddTask={onAddTask}
         />
       )
       day = addDays(day, 1)

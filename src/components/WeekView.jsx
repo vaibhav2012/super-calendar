@@ -171,7 +171,7 @@ const WeekView = ({ currentDate, tasks, onTaskClick, onToggleTask, onAddTask, hi
             >
               <div className="day-name">{dayName}</div>
               <div className="day-date">{format(day, 'd')}</div>
-        </div>
+            </div>
           )
         })}
       </div>
@@ -218,7 +218,8 @@ const WeekView = ({ currentDate, tasks, onTaskClick, onToggleTask, onAddTask, hi
                   minHeight: `${slotHeight}px`
                 }}
                 onClick={(e) => {
-                  if (e.target.closest('.week-time-slot-task')) {
+                  // Check if click is directly on a task item
+                  if (e.target.classList.contains('task-item') || e.target.closest('.task-item')) {
                     return
                   }
                   onAddTask(format(day, 'yyyy-MM-dd'), timeSlot.time)

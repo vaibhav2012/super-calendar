@@ -2,7 +2,7 @@ import React from 'react'
 
 const TaskItem = ({ task, onClick, onToggle }) => {
   const handleClick = (e) => {
-    e.stopPropagation()
+    // Don't stop propagation - let parent handle click detection
     onClick()
   }
 
@@ -31,12 +31,12 @@ const TaskItem = ({ task, onClick, onToggle }) => {
 
   const getTaskBackgroundColor = (task) => {
     const taskColor = getTaskColor(task)
-    // Convert hex to rgba with low opacity for background
+    // Convert hex to rgba with moderate opacity for background
     const hex = taskColor.replace('#', '')
     const r = parseInt(hex.substr(0, 2), 16)
     const g = parseInt(hex.substr(2, 2), 16)
     const b = parseInt(hex.substr(4, 2), 16)
-    return `rgba(${r}, ${g}, ${b}, 0.1)`
+    return `rgba(${r}, ${g}, ${b}, 0.15)`
   }
 
   return (
@@ -44,9 +44,8 @@ const TaskItem = ({ task, onClick, onToggle }) => {
       className={`task-item ${task.completed ? 'completed' : ''}`}
       onClick={handleClick}
       style={{
-        backgroundColor: getTaskBackgroundColor(task),
-        borderColor: getTaskColor(task),
-        borderLeftColor: getTaskColor(task)
+        borderLeftColor: getTaskColor(task),
+        backgroundColor: getTaskBackgroundColor(task)
       }}
     >
       <div 

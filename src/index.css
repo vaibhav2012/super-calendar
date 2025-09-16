@@ -471,7 +471,7 @@ body {
 }
 
 .week-time-slot-task {
-  background: #f0f7ff;
+  background: transparent;
   border-radius: 1px;
   padding: 0px;
   font-size: 4px;
@@ -509,7 +509,7 @@ body {
 }
 
 .week-time-slot-task:hover {
-  background: #e3f2fd;
+  background: rgba(25, 118, 210, 0.05);
 }
 
 .week-time-slot-task:last-child {
@@ -638,14 +638,14 @@ body {
 }
 
 .day-time-slot-task {
-  background: #f0f7ff;
-  border-radius: 4px;
-  padding: 4px 6px;
+  background: transparent;
+  border-radius: 2px;
+  padding: 2px 4px;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.2s;
-  margin-bottom: 2px;
-  min-height: 24px;
+  margin-bottom: 1px;
+  min-height: 20px;
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -653,28 +653,28 @@ body {
 }
 
 .day-time-slot-task.task-size-small {
-  padding: 4px 6px;
+  padding: 2px 4px;
   font-size: 11px;
-  min-height: 22px;
-  margin-bottom: 2px;
+  min-height: 18px;
+  margin-bottom: 1px;
 }
 
 .day-time-slot-task.task-size-medium {
-  padding: 6px 8px;
+  padding: 3px 5px;
   font-size: 13px;
-  min-height: 28px;
-  margin-bottom: 2px;
+  min-height: 22px;
+  margin-bottom: 1px;
 }
 
 .day-time-slot-task.task-size-large {
-  padding: 8px 10px;
+  padding: 4px 6px;
   font-size: 14px;
-  min-height: 32px;
-  margin-bottom: 2px;
+  min-height: 26px;
+  margin-bottom: 1px;
 }
 
 .day-time-slot-task:hover {
-  background: #e3f2fd;
+  background: rgba(25, 118, 210, 0.05);
 }
 
 /* All Day Section */
@@ -770,14 +770,14 @@ body {
 }
 
 .time-slot-task {
-  background: #f0f7ff;
-  border-radius: 4px;
-  padding: 4px 6px;
+  background: transparent;
+  border-radius: 2px;
+  padding: 2px 4px;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.2s;
-  margin-bottom: 2px;
-  min-height: 24px;
+  margin-bottom: 1px;
+  min-height: 20px;
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -787,28 +787,28 @@ body {
 
 /* Task size variations for Day View */
 .time-slot-task.task-size-small {
-  padding: 4px 6px;
+  padding: 2px 4px;
   font-size: 11px;
-  min-height: 22px;
-  margin-bottom: 2px;
+  min-height: 18px;
+  margin-bottom: 1px;
 }
 
 .time-slot-task.task-size-medium {
-  padding: 6px 8px;
+  padding: 3px 5px;
   font-size: 13px;
-  min-height: 28px;
-  margin-bottom: 2px;
+  min-height: 22px;
+  margin-bottom: 1px;
 }
 
 .time-slot-task.task-size-large {
-  padding: 8px 10px;
+  padding: 4px 6px;
   font-size: 14px;
-  min-height: 32px;
-  margin-bottom: 2px;
+  min-height: 26px;
+  margin-bottom: 1px;
 }
 
 .time-slot-task:hover {
-  background: #e3f2fd;
+  background: rgba(25, 118, 210, 0.05);
 }
 
 .time-slot-task:last-child {
@@ -919,35 +919,53 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
 }
 
+/* Default task item - compact for month view */
 .task-item {
-  background: #e3f2fd;
-  border: 1px solid #bbdefb;
-  border-left: 3px solid #1976d2;
-  border-radius: 4px;
-  padding: 4px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 2px solid #1976d2;
+  border-radius: 2px;
+  padding: 2px 4px;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.2s;
-  display: flex;
+  display: inline-flex !important;
   align-items: center;
   gap: 4px;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin: 1px 0;
+  width: fit-content !important;
+  max-width: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Task items in time slots (Day/Week views) - full width */
+.day-time-slot-task .task-item,
+.week-time-slot-task .task-item,
+.time-slot-task .task-item {
+  display: flex !important;
+  width: 100% !important;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .task-item:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: rgba(25, 118, 210, 0.05);
+  transform: none;
+  box-shadow: none;
 }
 
 .task-item.completed {
-  background: #e8f5e8;
-  border-color: #c8e6c9;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-left-color: #388e3c;
   text-decoration: line-through;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .recurring-indicator {
@@ -2001,10 +2019,25 @@ select.form-input {
   
   /* Better touch targets */
   .task-item {
-    padding: 6px;
+    padding: 3px 4px;
     margin: 1px 0;
-    border-radius: 4px;
+    border-radius: 2px;
     font-size: 12px;
+    display: inline-flex !important;
+    width: fit-content !important;
+    max-width: 100%;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* Task items in time slots (Day/Week views) - full width on mobile */
+  .day-time-slot-task .task-item,
+  .week-time-slot-task .task-item,
+  .time-slot-task .task-item {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -2045,8 +2078,23 @@ select.form-input {
   
   .task-item {
     font-size: 12px;
-    padding: 4px 6px;
+    padding: 2px 4px;
     margin: 1px 0;
+    display: inline-flex !important;
+    width: fit-content !important;
+    max-width: 100%;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* Task items in time slots (Day/Week views) - full width on mobile portrait */
+  .day-time-slot-task .task-item,
+  .week-time-slot-task .task-item,
+  .time-slot-task .task-item {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .view-toggle button {
@@ -2210,7 +2258,7 @@ select.form-input {
   .desktop-controls {
     display: flex;
   }
-}
+  }
   
   .week-days-grid {
     grid-template-columns: 1fr;
@@ -2220,9 +2268,7 @@ select.form-input {
     min-width: auto;
   }
   
-  .week-day-header {
-    display: none;
-  }
+  /* Keep week-day-header visible on mobile */
   
   .week-time-label-small {
     width: 40px;
@@ -2506,11 +2552,11 @@ select.form-input {
 }
 
 .dark-mode .week-time-slot-task {
-  background: #2d2e30;
+  background: transparent;
 }
 
 .dark-mode .week-time-slot-task:hover {
-  background: #3c4043;
+  background: rgba(25, 118, 210, 0.1);
 }
 
 .dark-mode .week-all-day-task {
@@ -2544,11 +2590,11 @@ select.form-input {
 }
 
 .dark-mode .time-slot-task {
-  background: #2d2e30;
+  background: transparent;
 }
 
 .dark-mode .time-slot-task:hover {
-  background: #3c4043;
+  background: rgba(25, 118, 210, 0.1);
 }
 
 .dark-mode .modal {
