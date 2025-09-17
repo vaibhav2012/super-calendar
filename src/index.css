@@ -455,14 +455,12 @@ body {
   border-bottom: 1px solid #dadce0;
 }
 
-.week-time-slot:hover {
-  background-color: rgba(25, 118, 210, 0.05);
-}
 
 .week-time-slot.collapsed {
   background-color: #f5f5f5;
   opacity: 0.6;
 }
+
 
 .week-time-label.collapsed {
   background-color: #f5f5f5;
@@ -622,9 +620,6 @@ body {
   transition: background-color 0.2s;
 }
 
-.day-time-slot:hover {
-  background-color: rgba(25, 118, 210, 0.05);
-}
 
 .day-time-slot.collapsed {
   background-color: #f5f5f5;
@@ -632,6 +627,7 @@ body {
   min-height: 20px;
   padding: 2px 8px;
 }
+
 
 .day-time-slot:last-child {
   border-bottom: none;
@@ -732,14 +728,12 @@ body {
   cursor: pointer;
 }
 
-.time-slot:hover {
-  background-color: rgba(25, 118, 210, 0.05);
-}
 
 .time-slot.collapsed {
   background-color: #f5f5f5;
   opacity: 0.6;
 }
+
 
 .time-slot.collapsed .time-label {
   font-size: 10px;
@@ -891,9 +885,6 @@ body {
   transition: background-color 0.2s;
 }
 
-.day-cell:hover {
-  background: #f8f9fa;
-}
 
 .day-cell.other-month {
   background: #f8f9fa;
@@ -966,6 +957,10 @@ body {
   border-left-color: #388e3c;
   text-decoration: line-through;
   opacity: 0.6;
+}
+
+.task-item.past {
+  opacity: 0.4 !important;
 }
 
 .recurring-indicator {
@@ -1229,8 +1224,8 @@ body {
 }
 
 .task-checkbox.checked {
-  background: #1a73e8;
-  border-color: #1a73e8;
+  background: #4caf50;
+  border-color: #4caf50;
 }
 
 .task-title {
@@ -2434,13 +2429,15 @@ select.form-input {
   border-color: #5f6368;
 }
 
-.dark-mode .day-cell:hover {
-  background: #5f6368;
-}
 
 .dark-mode .day-cell.other-month {
   background: #2d2e30;
   color: #5f6368;
+}
+
+
+.dark-mode .task-item.past {
+  opacity: 0.3 !important;
 }
 
 .dark-mode .day-cell.today {

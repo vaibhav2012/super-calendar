@@ -12,6 +12,7 @@ const DayCell = ({
   onAddTask
 }) => {
   const dayNumber = format(day, 'd')
+  
 
   const handleDayClick = (e) => {
     // Check if click is directly on a task item or its children
@@ -37,24 +38,48 @@ const DayCell = ({
         {dayNumber}
       </div>
       
-      <div className="tasks-container">
-        {tasks.slice(0, 3).map(task => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onClick={() => onTaskClick(task)}
-            onToggle={(e) => {
-              e.stopPropagation()
-              onToggleTask(task.id)
-            }}
-          />
-        ))}
-        {tasks.length > 3 && (
-          <div className="more-tasks">
-            +{tasks.length - 3} more
-          </div>
-        )}
-      </div>
+                      <div className="tasks-container">
+                        {tasks.slice(0, 3).map(task => {
+                          // Check if this specific task is in the past
+                          const taskIsPast = (() => {
+                            const now = new Date()
+                            const taskDate = new Date(task.date)
+                            
+                            // If it's a different day, check if it's before today
+                            if (!isTodayIST(day)) {
+                              taskDate.setHours(0, 0, 0, 0)
+                              now.setHours(0, 0, 0, 0)
+                              return taskDate < now
+                            } else {
+                              // If it's today, check if the task time is in the past
+                              const taskTime = task.time || '00:00'
+                              const [taskHour, taskMinute] = taskTime.split(':').map(Number)
+                              const currentHour = now.getHours()
+                              const currentMinute = now.getMinutes()
+                              
+                              return taskHour < currentHour || (taskHour === currentHour && taskMinute < currentMinute)
+                            }
+                          })()
+                          
+                          return (
+                            <TaskItem
+                              key={task.id}
+                              task={task}
+                              onClick={() => onTaskClick(task)}
+                              onToggle={(e) => {
+                                e.stopPropagation()
+                                onToggleTask(task.id)
+                              }}
+                              isPast={taskIsPast}
+                            />
+                          )
+                        })}
+                        {tasks.length > 3 && (
+                          <div className="more-tasks">
+                            +{tasks.length - 3} more
+                          </div>
+                        )}
+                      </div>
     </div>
   )
 }

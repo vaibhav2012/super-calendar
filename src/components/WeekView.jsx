@@ -225,17 +225,41 @@ const WeekView = ({ currentDate, tasks, onTaskClick, onToggleTask, onAddTask, hi
                   onAddTask(format(day, 'yyyy-MM-dd'), timeSlot.time)
                 }}
               >
-                <div className="week-time-content">
-                  {!isCollapsed && slotTasks.map(task => (
-                    <div key={task.id} className={`week-time-slot-task task-size-${taskSize}`}>
-                      <TaskItem
-                        task={task}
-                        onClick={() => onTaskClick(task)}
-                        onToggle={() => onToggleTask(task.id)}
-                      />
-          </div>
-        ))}
-                </div>
+                    <div className="week-time-content">
+                      {!isCollapsed && slotTasks.map(task => {
+                        // Check if this specific task is in the past
+                        const taskIsPast = (() => {
+                          const now = new Date()
+                          const taskDate = new Date(task.date)
+                          
+                          // If it's a different day, check if it's before today
+                          if (!isTodayIST(day)) {
+                            taskDate.setHours(0, 0, 0, 0)
+                            now.setHours(0, 0, 0, 0)
+                            return taskDate < now
+                          } else {
+                            // If it's today, check if the task time is in the past
+                            const taskTime = task.time || '00:00'
+                            const [taskHour, taskMinute] = taskTime.split(':').map(Number)
+                            const currentHour = now.getHours()
+                            const currentMinute = now.getMinutes()
+                            
+                            return taskHour < currentHour || (taskHour === currentHour && taskMinute < currentMinute)
+                          }
+                        })()
+                        
+                        return (
+                          <div key={task.id} className={`week-time-slot-task task-size-${taskSize}`}>
+                            <TaskItem
+                              task={task}
+                              onClick={() => onTaskClick(task)}
+                              onToggle={() => onToggleTask(task.id)}
+                              isPast={taskIsPast}
+                            />
+                          </div>
+                        )
+                      })}
+                    </div>
               </div>
             )
           })

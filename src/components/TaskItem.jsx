@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TaskItem = ({ task, onClick, onToggle }) => {
+const TaskItem = ({ task, onClick, onToggle, isPast = false }) => {
   const handleClick = (e) => {
     // Don't stop propagation - let parent handle click detection
     onClick()
@@ -41,7 +41,7 @@ const TaskItem = ({ task, onClick, onToggle }) => {
 
   return (
     <div 
-      className={`task-item ${task.completed ? 'completed' : ''}`}
+      className={`task-item ${task.completed ? 'completed' : ''} ${isPast ? 'past' : ''}`}
       onClick={handleClick}
       style={{
         borderLeftColor: getTaskColor(task),

@@ -160,6 +160,7 @@ const DayView = ({ currentDate, tasks, onTaskClick, onToggleTask, onAddTask, hid
               const slotTasks = getTasksForTimeSlot(timeSlot)
               const isCollapsed = isTimeSlotCollapsed(timeSlot)
               const slotHeight = isCollapsed ? 20 : getTimeSlotHeight(slotTasks.length)
+              
               return (
                 <div 
                   key={timeSlot.hour} 
@@ -174,15 +175,39 @@ const DayView = ({ currentDate, tasks, onTaskClick, onToggleTask, onAddTask, hid
                     onAddTask(format(currentDate, 'yyyy-MM-dd'), timeSlot.time)
                   }}
                 >
-                  {!isCollapsed && slotTasks.map(task => (
-                    <div key={task.id} className={`day-time-slot-task task-size-${taskSize}`}>
-                      <TaskItem
-                        task={task}
-                        onClick={() => onTaskClick(task)}
-                        onToggle={() => onToggleTask(task.id)}
-                      />
-                    </div>
-                  ))}
+                    {!isCollapsed && slotTasks.map(task => {
+                      // Check if this specific task is in the past
+                      const taskIsPast = (() => {
+                        const now = new Date()
+                        const taskDate = new Date(task.date)
+                        
+                        // If it's a different day, check if it's before today
+                        if (!isTodayIST(currentDate)) {
+                          taskDate.setHours(0, 0, 0, 0)
+                          now.setHours(0, 0, 0, 0)
+                          return taskDate < now
+                        } else {
+                          // If it's today, check if the task time is in the past
+                          const taskTime = task.time || '00:00'
+                          const [taskHour, taskMinute] = taskTime.split(':').map(Number)
+                          const currentHour = now.getHours()
+                          const currentMinute = now.getMinutes()
+                          
+                          return taskHour < currentHour || (taskHour === currentHour && taskMinute < currentMinute)
+                        }
+                      })()
+                      
+                      return (
+                        <div key={task.id} className={`day-time-slot-task task-size-${taskSize}`}>
+                          <TaskItem
+                            task={task}
+                            onClick={() => onTaskClick(task)}
+                            onToggle={() => onToggleTask(task.id)}
+                            isPast={taskIsPast}
+                          />
+                        </div>
+                      )
+                    })}
                 </div>
               )
             })}
