@@ -9,7 +9,8 @@ const DayCell = ({
   isToday, 
   onTaskClick, 
   onToggleTask,
-  onAddTask
+  onAddTask,
+  isTodayIST
 }) => {
   const dayNumber = format(day, 'd')
   

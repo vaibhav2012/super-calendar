@@ -41,6 +41,7 @@ const MonthView = ({ currentDate, tasks, onTaskClick, onToggleTask, onAddTask, i
           onTaskClick={onTaskClick}
           onToggleTask={onToggleTask}
           onAddTask={onAddTask}
+          isTodayIST={isTodayIST}
         />
       )
       day = addDays(day, 1)
